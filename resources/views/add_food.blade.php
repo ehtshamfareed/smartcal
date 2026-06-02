@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ asset('favicon.png') }}?v=3" type="image/png">
     <title>Add Fuel - SmartCal</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,12 +18,10 @@
                 <a href="{{ route('dashboard') }}">← Back to Dashboard</a>
             </div>
         </nav>
-
         <div class="tool-header">
             <h1>Database Query</h1>
             <p>Access our macronutrient database or input custom entries for precise tracking.</p>
         </div>
-
         <div class="dashboard-grid"> 
             <div class="sidebar">
                 <div class="card" style="margin-bottom: 2rem;">
@@ -60,7 +59,6 @@
                     <h2 style="font-size: 1.25rem;">Algorithmic Suggestions</h2>
                     <p style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 0.5rem;">{{ $tips_title }}</p>
                     <p class="text-sm text-muted" style="margin-bottom: 1.5rem;">{{ $tips_desc }}</p>
-
                     <h3 style="font-size: 1rem; color: var(--gray-light); margin-bottom: 1rem; border-bottom: 1px solid var(--gray-dark); padding-bottom: 0.5rem;">Quick-Add Fuel</h3>
                     <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                         @foreach($quick_adds as $qa)
@@ -77,7 +75,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="main-content">
                 <div class="card">
                     <div style="margin-bottom: 2rem;">
@@ -88,7 +85,6 @@
                                 <a href="{{ route('food.add', ['cat' => $cat]) }}" class="cat-tab {{ request('cat') == $cat ? 'active' : '' }}">{{ $cat }}</a>
                             @endforeach
                         </div>
-
                         <form method="POST" action="{{ route('food.add') }}" class="mt-1">
                             @csrf
                             <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1.5rem;">
@@ -111,11 +107,8 @@
                                             </option>
                                         @endforeach
                                     </select>
-                                    <!-- Simple JS to set hidden calories field if needed, but easier to handle in controller -->
                                 </div>
                             </div>
-                            <!-- If selecting from DB, we need calories. Controller should handle it if food_id is present. -->
-                            <!-- To make it consistent with the logic, I'll add a hidden calories input that gets updated via JS if food_id is selected, or just use food_id in controller to fetch cals. -->
                             <input type="hidden" name="calories" id="selected_calories" value="0">
                             <script>
                                 document.querySelector('select[name="food_id"]').addEventListener('change', function() {
@@ -126,7 +119,6 @@
                             <button type="submit" class="btn mt-1" style="width: auto; padding-left: 3rem; padding-right: 3rem;">COMMIT TO LOG</button>
                         </form>
                     </div> 
-
                     <div style="margin-top: 3rem; border-top: 2px solid var(--gray); padding-top: 2rem;">
                         <h2>Manual Entry</h2>
                         <p class="text-muted" style="margin-bottom: 1.5rem;">For unlisted supplements or complex custom macros.</p>

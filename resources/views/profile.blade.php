@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ asset('favicon.png') }}?v=3" type="image/png">
     <title>Bio-Metrics - SmartCal</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,12 +20,10 @@
                 <a href="{{ route('logout') }}">Sign Out</a>
             </div>
         </nav>
-
         <div class="tool-header">
             <h1>Bio-Metric Profile</h1>
             <p>Precise data yields optimal results. Update your metrics to recalculate your caloric requirements.</p>
         </div>
-
         @php
             $height_m = $user->height_cm / 100;
             $bmi = 0;
@@ -38,7 +37,6 @@
             elseif($bmi < 30) { $bmi_status = "Overweight"; $bmi_color = "#FF9800"; }
             else { $bmi_status = "Obese"; $bmi_color = "#F44336"; }
         @endphp
-
         <div class="card" style="max-width: 800px; margin: 0 auto; margin-bottom: 2rem;">
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--gray); padding-bottom: 1rem; margin-bottom: 1.5rem;">
                 <h2 style="margin: 0; border: none; padding: 0;">Update Bio-Metrics</h2>
@@ -48,7 +46,6 @@
                     <div style="font-size: 0.8rem; font-weight: 600; color: {{ $bmi_color }}; text-transform: uppercase;">{{ $bmi_status }}</div>
                 </div>
             </div>
-
             <form method="POST" action="{{ route('profile') }}">
                 @csrf
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
@@ -95,7 +92,6 @@
                 <button type="submit" class="btn mt-2" style="width: auto; padding-left: 3rem; padding-right: 3rem;">UPDATE METRICS & LOG WEIGHT</button>
             </form>
         </div>
-
         @php
             $weight_history = \App\Models\WeightLog::where('user_id', $user->id)
                 ->where('is_deleted', 0)
@@ -105,7 +101,6 @@
             $chart_dates = $weight_history->pluck('date')->toArray();
             $chart_weights = $weight_history->pluck('weight_kg')->toArray();
         @endphp
-
         @if(count($weight_history) > 1)
         <div class="card" style="max-width: 800px; margin: 0 auto; margin-bottom: 3rem;">
             <h2 style="margin-bottom: 1.5rem;">Weight Trajectory (30-Day Limit)</h2>
@@ -113,7 +108,6 @@
                 <canvas id="weightChart"></canvas>
             </div>
         </div>
-
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
         const ctx = document.getElementById('weightChart').getContext('2d');

@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-
 @section('title', 'Exercise Database - SmartCal Admin')
-
 @section('admin_content')
 <div class="page-header">
     <div class="page-title">
@@ -9,7 +7,6 @@
         <p>Manage global exercises available for members to log.</p>
     </div>
 </div>
-
 <div style="display: block;">
     <div class="card">
         <div class="card-header" style="border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem;">

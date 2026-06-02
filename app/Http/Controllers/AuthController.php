@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
 class AuthController extends Controller
 {
     public function showLogin()
@@ -18,32 +15,26 @@ class AuthController extends Controller
         }
         return view('auth.login');
     }
-
     public function login(Request $request)
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            
             return Auth::user()->role === 'admin' 
                 ? redirect()->route('admin.dashboard') 
                 : redirect()->route('dashboard');
         }
-
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
     }
-
     public function showRegister()
     {
         return view('auth.register');
     }
-
     public function register(Request $request)
     {
         $request->validate([
@@ -57,7 +48,6 @@ class AuthController extends Controller
             'activity_level' => 'required|in:sedentary,light,moderate,active,very_active',
             'weight_goal' => 'required|in:lose,maintain,gain',
         ]);
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -69,12 +59,9 @@ class AuthController extends Controller
             'activity_level' => $request->activity_level,
             'weight_goal' => $request->weight_goal,
         ]);
-
         Auth::login($user);
-
         return redirect()->route('dashboard');
     }
-
     public function logout(Request $request)
     {
         Auth::logout();

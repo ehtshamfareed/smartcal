@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ asset('favicon.png') }}?v=3" type="image/png">
     <title>Member Login | SmartCal</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -23,7 +24,6 @@
         .brand-logo span { color: #10b981; }
         .split-text h1 { font-family: 'Outfit'; font-size: 3.5rem; color: #fff; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px; }
         .split-text p { font-family: 'Outfit'; font-size: 1.25rem; color: #f1f5f9; line-height: 1.6; max-width: 500px; font-weight: 400; }
-        
         .split-right { 
             flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; 
             background: #f8fafc; position: relative; box-shadow: inset 10px 0 30px rgba(0,0,0,0.02);
@@ -50,7 +50,6 @@
         .auth-footer a:hover span { color: #059669; }
         .back-home { display: inline-flex; align-items: center; margin-bottom: 2rem; color: #64748b; text-decoration: none; font-family: 'Outfit'; font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
         .back-home:hover { color: #10b981; }
-
         @media (max-width: 900px) {
             .split-left { display: none; }
             .split-right { padding: 2rem; }
@@ -59,7 +58,6 @@
 </head>
 <body>
     <div class="split-layout">
-        <!-- Visual Left Pane -->
         <div class="split-left">
             <div class="split-content">
                 <a href="{{ route('index') }}" class="brand-logo"><span>Smart</span>Cal</a>
@@ -69,8 +67,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Form Right Pane -->
         <div class="split-right">
             <div class="form-container">
                 <a href="{{ route('index') }}" class="back-home"><i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i> Return to Site</a>
@@ -78,13 +74,11 @@
                     <h2>Member Login</h2>
                     <p>Enter your account details below.</p>
                 </div>
-                
                 @if($errors->any())
                     <div style="color: #F44336; text-align: center; margin-bottom: 2rem; padding: 1rem; border: 1px solid rgba(244, 67, 54, 0.3); background: rgba(244, 67, 54, 0.1); border-radius: 8px; font-weight: 600; font-family: 'Outfit'; font-size: 0.95rem;">
                         <i class="fas fa-exclamation-circle" style="margin-right: 0.5rem;"></i> {{ $errors->first() }}
                     </div>
                 @endif
-
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div>
@@ -97,7 +91,6 @@
                     </div>
                     <button type="submit" class="auth-btn" style="margin-top: 1rem;">SIGN IN</button>
                 </form>
-                
                 <div class="auth-footer">
                     <p style="color: #64748b; font-family: 'Outfit'; font-size: 1rem;">
                         Don't have an account? <br><a href="{{ route('register') }}" style="display:inline-block; margin-top:0.5rem; color: #0f172a; text-decoration: none; font-weight: 700;"><span>Create one completely free</span> →</a>

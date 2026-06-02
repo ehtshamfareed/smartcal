@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-
 @section('title', 'Add New Exercise - SmartCal Admin')
-
 @section('admin_content')
 <div class="page-header">
     <div class="page-title">
@@ -9,7 +7,6 @@
         <p>Add a new exercise record to the global database.</p>
     </div>
 </div>
-
 <div style="max-width: 600px; margin: 0 auto;">
     <div class="card">
         <div class="card-header" style="border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 1.5rem;">

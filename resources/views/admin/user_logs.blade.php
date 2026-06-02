@@ -1,12 +1,9 @@
 @extends('layouts.admin')
-
 @section('title', 'Recruit File - SmartCal Admin')
-
 @section('admin_content')
 <div style="margin-bottom: 1rem;">
     <a href="{{ route('admin.users') }}" style="color: var(--gray-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase;"><i class="fas fa-arrow-left"></i> Return to Directory</a>
 </div>
-
 <div class="page-header">
     <div class="page-title">
         <h1 style="display: flex; align-items: center; gap: 1rem;">
@@ -22,7 +19,6 @@
         <strong>Activity Level:</strong> <span style="color: #0f172a; font-weight: 700;">{{ strtoupper($user->activity_level) }}</span>
     </div>
 </div>
-
 <div class="masonry-grid">
     <div class="stat-box">
         <div class="stat-icon"><i class="fas fa-calendar-week"></i></div>
@@ -31,7 +27,6 @@
             <div class="stat-value">{{ $avg_7_days }} <span>KCAL/DAY</span></div>
         </div>
     </div>
-    
     <div class="stat-box green">
         <div class="stat-icon"><i class="fas fa-clipboard-list"></i></div>
         <div class="stat-content">
@@ -39,7 +34,6 @@
             <div class="stat-value">{{ $user->daily_logs_count }} <span>LOGS</span></div>
         </div>
     </div>
-    
     <div class="stat-box blue">
         <div class="stat-icon"><i class="fas fa-chart-area"></i></div>
         <div class="stat-content">
@@ -48,9 +42,7 @@
         </div>
     </div>
 </div>
-
 <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; font-weight: 800; color: #0f172a;">Detailed Activity Log</h2>
-
 @if(empty($grouped_logs))
     <div class="card" style="text-align: center; padding: 4rem;">
         <p style="color: #64748b; font-size: 1.5rem; font-weight: 800; text-transform: uppercase;"><i class="fas fa-search"></i> No Data Signals Detected</p>
@@ -95,7 +87,6 @@
                     </div>
                 </div>
                 @endif
-                
                 @if(isset($weight_logs[$date]))
                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0; background: #fff; border-bottom: 1px dashed #e2e8f0; transition: 0.2s;" onmouseover="this.style.backgroundColor='#f8fafc'" onmouseout="this.style.backgroundColor='#fff'">
                     <div style="display: flex; align-items: center; gap: 1rem; padding-left: 1rem;">
@@ -116,7 +107,6 @@
                     </div>
                 </div>
                 @endif
-                
                 @if(isset($workout_logs[$date]))
                     @foreach($workout_logs[$date] as $workout)
                     <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0; background: #fff; border-bottom: 1px dashed #e2e8f0; transition: 0.2s;" onmouseover="this.style.backgroundColor='#f8fafc'" onmouseout="this.style.backgroundColor='#fff'">

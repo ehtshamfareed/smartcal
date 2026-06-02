@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-
 @section('title', 'Command Center - SmartCal Admin')
-
 @section('admin_content')
 <div class="page-header">
     <div class="page-title">
@@ -9,7 +7,6 @@
         <p>Platform Metrics and Datasets Overview.</p>
     </div>
 </div>
-
 <div class="masonry-grid">
     <div class="stat-box">
         <div class="stat-icon"><i class="fas fa-users"></i></div>
@@ -18,7 +15,6 @@
             <div class="stat-value">{{ $total_users }}</div>
         </div>
     </div>
-    
     <div class="stat-box green">
         <div class="stat-icon"><i class="fas fa-apple-alt"></i></div>
         <div class="stat-content">
@@ -26,7 +22,6 @@
             <div class="stat-value">{{ $total_foods }} <span>Items</span></div>
         </div>
     </div>
-    
     <div class="stat-box blue">
         <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
         <div class="stat-content">
@@ -35,7 +30,6 @@
         </div>
     </div>
 </div>
-
 <div class="card">
     <div class="card-header" style="border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem;">
         <h3>Recent Members</h3>

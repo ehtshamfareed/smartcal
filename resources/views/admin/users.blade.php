@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-
 @section('title', 'User Directory - SmartCal Admin')
-
 @section('admin_content')
 <div class="page-header">
     <div class="page-title">
@@ -9,7 +7,6 @@
         <p>Monitor, review, and manage active member accounts across the system.</p>
     </div>
 </div>
-
 <div class="card">
     <div class="table-wrapper">
         <table class="admin-table">

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ asset('favicon.png') }}?v=3" type="image/png">
     <title>Create Account | SmartCal</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -23,7 +24,6 @@
         .brand-logo span { color: #10b981; }
         .split-text h1 { font-family: 'Outfit'; font-size: 3.5rem; color: #fff; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px; }
         .split-text p { font-family: 'Outfit'; font-size: 1.25rem; color: #f1f5f9; line-height: 1.6; max-width: 500px; font-weight: 400; }
-        
         .split-right { 
             flex: 1.2; display: flex; flex-direction: column; justify-content: center; align-items: center; 
             background: #f8fafc; position: relative; box-shadow: inset 10px 0 30px rgba(0,0,0,0.02); padding: 4rem 2rem;
@@ -32,39 +32,32 @@
         .form-header { margin-bottom: 2.5rem; text-align: left; }
         .form-header h2 { font-family: 'Outfit'; font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 0.5rem; }
         .form-header p { font-family: 'Outfit'; color: #64748b; font-size: 1.05rem; }
-        
         .section-title { font-family: 'Outfit'; font-size: 1.4rem; color: #0f172a; font-weight: 800; margin: 2rem 0 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #f1f5f9; display: flex; align-items: center; gap: 0.5rem;}
         .section-title i { color: #10b981; }
-
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
         .form-group-full { grid-column: 1 / -1; }
-
         .auth-label { font-family: 'Outfit'; font-size: 0.85rem; color: #475569; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; display: block; font-weight: 700; }
         .auth-input, .auth-select { 
             width: 100%; padding: 1rem 1.2rem; background: #f8fafc; border: 1px solid #e2e8f0; 
             border-radius: 12px; color: #0f172a; font-family: 'Outfit'; font-size: 1rem; transition: 0.3s;
         }
         .auth-input:focus, .auth-select:focus { outline: none; border-color: #10b981; background: #ffffff; box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1); }
-        
         .radio-group { display: flex; gap: 1rem; }
         .radio-label { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.8rem 1.5rem; border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc; font-weight: 600; color: #475569; transition: 0.3s; flex: 1; justify-content: center;}
         .radio-label:hover { background: #fff; border-color: #cbd5e1; }
         .radio-label input[type="radio"] { accent-color: #10b981; width: 1.2rem; height: 1.2rem; cursor: pointer;}
-
         .auth-btn { 
             width: 100%; padding: 1.2rem; background: #10b981; margin-top: 2rem;
             color: white; border: none; border-radius: 12px; font-family: 'Outfit'; font-weight: 800; font-size: 1.1rem; 
             text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
         }
         .auth-btn:hover { background: #059669; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4); }
-        
         .auth-footer { margin-top: 2rem; text-align: center; }
         .auth-footer a { color: #0f172a; text-decoration: none; font-family: 'Outfit'; font-weight: 700; font-size: 1rem; transition: 0.3s; }
         .auth-footer a span { color: #10b981; }
         .auth-footer a:hover span { color: #059669; }
         .back-home { display: inline-flex; align-items: center; margin-bottom: 2rem; color: #64748b; text-decoration: none; font-family: 'Outfit'; font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
         .back-home:hover { color: #10b981; }
-
         @media (max-width: 900px) {
             .split-left { display: none; }
             .split-right { padding: 2rem 1rem; }
@@ -75,7 +68,6 @@
 </head>
 <body>
     <div class="split-layout">
-        <!-- Visual Left Pane -->
         <div class="split-left">
             <div class="split-content">
                 <a href="{{ route('index') }}" class="brand-logo"><span>Smart</span>Cal</a>
@@ -85,8 +77,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Form Right Pane -->
         <div class="split-right">
             <div class="form-container">
                 <a href="{{ route('index') }}" class="back-home"><i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i> Return to Site</a>
@@ -94,16 +84,13 @@
                     <h2>Create Your Free Account</h2>
                     <p>Enter your details below to get started.</p>
                 </div>
-                
                 @if($errors->any())
                     <div style="color: #F44336; text-align: center; margin-bottom: 2rem; padding: 1rem; border: 1px solid rgba(244, 67, 54, 0.3); background: rgba(244, 67, 54, 0.1); border-radius: 8px; font-weight: 600; font-family: 'Outfit'; font-size: 0.95rem;">
                         <i class="fas fa-exclamation-circle" style="margin-right: 0.5rem;"></i> {{ $errors->first() }}
                     </div>
                 @endif
-
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-                    
                     <div class="section-title"><i class="fas fa-lock"></i> Account Details</div>
                     <div class="form-grid">
                         <div class="form-group-full">
@@ -123,7 +110,6 @@
                             <input type="password" name="password_confirmation" class="auth-input" placeholder="Repeat your password" required>
                         </div>
                     </div>
-
                     <div class="section-title"><i class="fas fa-user"></i> Profile Details</div>
                     <div class="form-grid">
                         <div class="form-group-full">
@@ -168,14 +154,11 @@
                             </select>
                         </div>
                     </div>
-
                     <p style="text-align: center; color: #64748b; font-size: 0.9rem; margin-top: 2rem;">
                         By creating an account, you accept our <a href="{{ route('terms.service') }}" style="color: #10b981; text-decoration: none;">Terms of Service</a> & <a href="{{ route('privacy.policy') }}" style="color: #10b981; text-decoration: none;">Privacy Policy</a>.
                     </p>
-
                     <button type="submit" class="auth-btn">CREATE ACCOUNT</button>
                 </form>
-                
                 <div class="auth-footer">
                     <p style="color: #64748b; font-family: 'Outfit'; font-size: 1rem;">
                         Already have an account? <a href="{{ route('login') }}"><span>Sign In here</span> →</a>

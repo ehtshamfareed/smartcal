@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ asset('favicon.png') }}?v=3" type="image/png">
     <title>SmartCal | The Ultimate Calorie & Macro Engine</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Fresh Wellness Landing Page Styles */
         body { background: #f8fafc; color: #1e293b; overflow-x: hidden; font-family: 'Outfit', sans-serif; scroll-behavior: smooth; }
-        
         /* Navbar */
         .top-nav {
             position: fixed; width: 100%; top: 0; z-index: 1000;
@@ -29,7 +29,6 @@
         .nav-links a:hover { color: #10b981; }
         .nav-links a.nav-btn { background: #10b981; color: #fff !important; padding: 12px 30px; border-radius: 50px; font-weight: 800; font-size: 14px; margin-left: 2.5rem; border: none; transition: 0.3s; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; }
         .nav-links a.nav-btn:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); color: #fff; }
-
         /* Animations */
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -46,7 +45,6 @@
         }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-
         /* Hero */
         .hero { 
             position: relative; min-height: 100vh; display: flex; align-items: center; padding-top: 120px;
@@ -54,7 +52,6 @@
             overflow: hidden;
         }
         .hero-container { max-width: 1400px; width: 100%; padding: 0 2rem; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        
         .hero-text-wrapper { max-width: 650px; z-index: 2;}
         .hero-badge {
             display: inline-block; padding: 0.5rem 1.5rem; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2);
@@ -65,20 +62,16 @@
         .hero h1 { font-size: 4.5rem; color: #0f172a; font-weight: 800; font-family: 'Outfit'; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -2px; }
         .hero h1 span { color: #10b981; } 
         .hero p { font-size: 1.25rem; color: #475569; line-height: 1.6; font-family: 'Outfit'; font-weight: 400; margin-bottom: 3rem; }
-        
         .cta-group { display: flex; gap: 1rem; justify-content: flex-start; }
         .btn-large { padding: 1.2rem 3rem; font-size: 1.1rem; border-radius: 50px; text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #fff; background: #10b981; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); transition: 0.3s; display: inline-block; }
         .btn-large:hover { background: #059669; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4); }
-
         /* Floating Hero Images (Cronometer style) */
         .hero-images { position: relative; width: 100%; height: 600px; display: flex; justify-content: center; align-items: center; }
         .floating-card { position: absolute; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.8); overflow: hidden; background: #fff;}
         .floating-card img { display: block; max-width: 100%; height: auto; }
-        
         .card-1 { width: 320px; z-index: 3; animation: float 6s ease-in-out infinite; left: 10%; top: 15%; }
         .card-2 { width: 280px; z-index: 2; animation: float 8s ease-in-out infinite reverse; right: 5%; top: 5%; }
         .card-3 { width: 260px; z-index: 4; animation: float 7s ease-in-out infinite; right: 15%; bottom: 10%; }
-
         /* Marquee Section */
         .marquee-section { padding: 3rem 0; background: #fff; border-bottom: 1px solid #e2e8f0; border-top: 1px solid #e2e8f0; overflow: hidden; position: relative;}
         .marquee-title { text-align: center; color: #64748b; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem; font-family: 'Outfit'; }
@@ -87,26 +80,21 @@
         .marquee-track-reverse { display: inline-flex; white-space: nowrap; animation: slide-reverse 20s linear infinite; }
         .marquee-item { display: inline-flex; align-items: center; justify-content: center; width: 200px; margin: 0 2rem; color: #94a3b8; font-size: 2rem; opacity: 0.6; transition: 0.3s; }
         .marquee-item:hover { opacity: 1; color: #10b981; }
-
         /* Alternating Rows (Cronometer Style) */
         .section { padding: 6rem 2rem; }
         .section-header { text-align: center; margin-bottom: 5rem; }
         .section-header h2 { font-size: 3rem; font-family: 'Outfit'; font-weight: 800; color: #0f172a; margin-bottom: 1rem; }
         .section-header p { font-size: 1.15rem; color: #64748b; font-family: 'Outfit'; max-width: 600px; margin: 0 auto; line-height: 1.6;}
-
         .alt-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; max-width: 1200px; margin: 0 auto 6rem; align-items: center; }
         .alt-row.reverse { grid-template-columns: 1fr 1fr; direction: rtl; }
         .alt-row.reverse > * { direction: ltr; }
-        
         .alt-text { padding: 2rem 0; }
         .alt-text h3 { font-size: 2.5rem; color: #0f172a; font-family: 'Outfit'; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2; }
         .alt-text p { font-size: 1.15rem; color: #475569; font-family: 'Outfit'; line-height: 1.7; }
-        
         .alt-img { position: relative; border-radius: 30px; box-shadow: 0 30px 60px rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.1); overflow: hidden; }
         .alt-img::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(16,185,129,0.05); z-index: 1; pointer-events: none; }
         .alt-img img { width: 100%; display: block; transition: 0.5s; }
         .alt-img:hover img { transform: scale(1.03); }
-
         /* Reviews */
         .reviews-bg { background: #f8fafc; border-top: 1px solid rgba(0,0,0,0.05); overflow: hidden; }
         .reviews-marquee-container { width: 100%; overflow: hidden; white-space: nowrap; position: relative; padding: 1rem 0; }
@@ -120,7 +108,6 @@
         .r-avatar { width: 50px; height: 50px; border-radius: 50%; background: #e2e8f0; background-size: cover; background-position: center; }
         .r-info h4 { font-family: 'Outfit'; color: #0f172a; font-size: 1.1rem; margin-bottom: 0.2rem; font-weight: 700; }
         .r-info p { font-family: 'Outfit'; color: #64748b; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;}
-
         /* Footer */
         .footer { background: #f8fafc; padding: 6rem 2rem 2rem; position: relative; overflow: hidden; margin-top: 4rem; }
         .footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: #10b981; }
@@ -137,25 +124,21 @@
         .footer ul li a::before { content: '→'; opacity: 0; margin-right: -15px; color: #10b981; transition: 0.3s; font-weight: bold; }
         .footer ul li a:hover { color: #10b981; transform: translateX(5px); }
         .footer ul li a:hover::before { opacity: 1; margin-right: 8px; }
-        
         .newsletter-box { display: flex; background: #fff; padding: 5px; border-radius: 50px; border: 1px solid #cbd5e1; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: 0.3s; }
         .newsletter-box:focus-within { border-color: #10b981; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1); }
         .newsletter-box input { flex: 1; border: none; padding: 0.8rem 1.5rem; font-family: 'Outfit'; font-size: 0.95rem; border-radius: 50px; outline: none; color: #0f172a; }
         .newsletter-box button { background: #10b981; color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 700; font-family: 'Outfit'; cursor: pointer; transition: 0.3s; }
         .newsletter-box button:hover { background: #059669; }
-
         .footer-bottom { max-width: 1400px; margin: 0 auto; border-top: 1px solid #cbd5e1; padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
         .footer-bottom p { margin: 0; font-size: 0.95rem; font-weight: 600; color: #94a3b8; }
         .footer-socials { display: flex; gap: 1rem; }
         .footer-socials a { font-size: 1.2rem; color: #94a3b8; background: #fff; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 1px solid #e2e8f0; transition: 0.3s; }
         .footer-socials a:hover { color: #fff; background: #10b981; border-color: #10b981; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3); }
-
         /* Fan Cards Section */
         .fan-section { padding: 8rem 2rem; text-align: center; background: #fff; overflow: hidden; border-bottom: 1px solid #e2e8f0; }
         .fan-section h2 { font-size: 2.8rem; font-family: 'Outfit'; font-weight: 800; color: #0f172a; max-width: 800px; margin: 0 auto 2rem; line-height: 1.2; }
         .fan-cta { background: #f59e0b; color: #fff; padding: 1.2rem 3rem; border-radius: 50px; font-family: 'Outfit'; font-weight: 800; font-size: 1.1rem; text-decoration: none; display: inline-block; transition: 0.3s; margin-bottom: 6rem; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); }
         .fan-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4); background: #f09300; }
-        
         .fan-container { position: relative; height: 480px; max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: flex-end; perspective: 1000px; }
         .fan-card-wrapper { position: absolute; bottom: 0; z-index: 1; transition: z-index 0s 0.2s; }
         .fan-card-wrapper:hover { z-index: 100 !important; transition: z-index 0s 0s; }
@@ -163,21 +146,18 @@
         .fan-card-wrapper:hover .fan-card { transform: translateY(-40px) scale(1.08); box-shadow: 0 40px 80px rgba(0,0,0,0.3); }
         .fan-img { flex: 1; background-size: cover; background-position: center; }
         .fan-text { padding: 1.5rem; color: #fff; font-family: 'Outfit'; font-weight: 700; font-size: 1.1rem; text-align: center; line-height: 1.4; display: flex; align-items: center; justify-content: center; height: 100px; }
-        
         .fcw-1 { transform: translateX(-240px) rotate(-12deg) scale(0.85); z-index: 1; }
         .fcw-2 { transform: translateX(-120px) rotate(-6deg) scale(0.92); z-index: 2; }
         .fcw-3 { transform: translateX(0) scale(1.0); z-index: 5; }
         .fcw-3 .fan-card { height: 480px; }
         .fcw-4 { transform: translateX(120px) rotate(6deg) scale(0.92); z-index: 2; }
         .fcw-5 { transform: translateX(240px) rotate(12deg) scale(0.85); z-index: 1; }
-        
         @media (max-width: 1024px) {
             .fan-container { height: auto; flex-direction: column; align-items: center; gap: 2rem; position: static; }
             .fan-card-wrapper { position: relative; transform: none !important; width: 100%; max-width: 320px; }
             .fan-card { height: 400px; width: 100%; }
             .fcw-3 .fan-card { height: 400px; }
         }
-
         /* Feature Highlights */
         .features-highlights { padding: 4rem 2rem; background: #fff; border-bottom: 1px solid #e2e8f0; }
         .features-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
@@ -186,7 +166,6 @@
         .feature-box i { color: #0f766e; font-size: 1.5rem; margin-bottom: 1rem; }
         .feature-box h3 { font-size: 1.25rem; color: #0f172a; margin-bottom: 1rem; font-weight: 700; font-family: 'Outfit'; }
         .feature-box p { color: #475569; line-height: 1.6; font-size: 0.95rem; margin: 0; }
-
         /* Help Section */
         .help-section { padding: 6rem 2rem; background: #fff8f0; }
         .help-header { text-align: center; margin-bottom: 4rem; }
@@ -199,7 +178,6 @@
         .help-content h3 { font-size: 1.1rem; color: #0f172a; font-weight: 700; margin-bottom: 1.5rem; line-height: 1.4; font-family: 'Outfit'; }
         .help-content i { color: #0f172a; font-size: 1.2rem; }
         .help-card img { width: 100%; height: 160px; object-fit: cover; }
-
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .hero-container, .alt-row { grid-template-columns: 1fr; gap: 2rem; }
@@ -217,8 +195,6 @@
     </style>
 </head>
 <body>
-
-    <!-- Navigation -->
     <nav class="top-nav">
         <div class="nav-container">
             <a href="{{ route('index') }}" class="logo"><i class="fas fa-leaf"></i> <span>Smart</span>Cal</a>
@@ -235,8 +211,6 @@
             </div>
         </div>
     </nav>
-
-    <!-- Hero Section -->
     <header class="hero">
         <div class="hero-container">
             <div class="hero-text-wrapper reveal active">
@@ -250,15 +224,12 @@
                 </div>
             </div>
             <div class="hero-images">
-                <!-- Conceptual Floating Images inspired by Cronometer's cards -->
                 <div class="floating-card card-1"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=600" alt="Food tracking" onerror="this.src='https://via.placeholder.com/600x400/10b981/ffffff?text=Food+Tracking'"></div>
                 <div class="floating-card card-2"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=600" alt="Healthy habits" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=Healthy+Habits'"></div>
                 <div class="floating-card card-3"><img src="https://images.unsplash.com/photo-1498837167922-41c53b4f094b?auto=format&fit=crop&q=80&w=600" alt="Nutrition stats" onerror="this.src='https://via.placeholder.com/600x400/f8fafc/10b981?text=Nutrition+Stats'"></div>
             </div>
         </div>
     </header>
-
-    <!-- Feature Highlights Section -->
     <section class="features-highlights">
         <div class="features-grid reveal">
             <div class="feature-box">
@@ -278,8 +249,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Help Section -->
     <section class="help-section">
         <div class="help-header reveal">
             <h2>How can we help?</h2>
@@ -316,9 +285,6 @@
             </div>
         </div>
     </section>
-
-
-    <!-- Trusted By / As Seen In Marquee -->
     <section class="marquee-section">
         <h4 class="marquee-title">Trusted & Integrated With</h4>
         <div class="marquee-container">
@@ -328,7 +294,6 @@
                 <span class="marquee-item"><i class="fas fa-heartbeat"></i>&nbsp;Fitbit</span>
                 <span class="marquee-item"><i class="fas fa-running"></i>&nbsp;Garmin</span>
                 <span class="marquee-item"><i class="fas fa-ring"></i>&nbsp;Oura</span>
-                <!-- Repeat for infinite loop illusion -->
                 <span class="marquee-item"><i class="fab fa-apple"></i>&nbsp;Apple Health</span>
                 <span class="marquee-item"><i class="fab fa-google"></i>&nbsp;Google Fit</span>
                 <span class="marquee-item"><i class="fas fa-heartbeat"></i>&nbsp;Fitbit</span>
@@ -339,12 +304,9 @@
             </div>
         </div>
     </section>
-
-    <!-- Fan Cards Section replacing old Why Use Section -->
     <section class="fan-section">
         <h2 class="reveal">If you count calories, macros, or micronutrients, you can count on us</h2>
         <a href="{{ route('register') }}" class="fan-cta reveal">Sign Up For Free</a>
-        
         <div class="fan-container reveal">
             <div class="fan-card-wrapper fcw-1">
                 <div class="fan-card" style="background: #064e3b;">
@@ -378,8 +340,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Testimonials Section -->
     <section class="section reviews-bg">
         <div class="section-header reveal">
             <h2>Success Stories</h2>
@@ -419,8 +379,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-grid">
             <div>
@@ -467,7 +425,6 @@
             </div>
         </div>
     </footer>
-
     <script>
         // Navbar Scroll
         window.addEventListener('scroll', function() {
@@ -478,7 +435,6 @@
                 nav.classList.remove('scrolled');
             }
         });
-
         // Scroll Reveal Animation
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");

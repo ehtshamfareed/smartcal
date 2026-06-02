@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ asset('favicon.png') }}?v=3" type="image/png">
     <title>SmartCal Blog | Eat smart. Live better.</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Shared Styles */
         body { background: #f8fafc; color: #1e293b; overflow-x: hidden; font-family: 'Outfit', sans-serif; scroll-behavior: smooth; }
-        
         /* Navbar */
         .top-nav {
             position: fixed; width: 100%; top: 0; z-index: 1000;
@@ -25,19 +25,15 @@
         .nav-links a:hover { color: #10b981; }
         .nav-links a.nav-btn { background: #10b981; color: #fff !important; padding: 12px 30px; border-radius: 50px; font-weight: 800; font-size: 14px; margin-left: 2.5rem; border: none; transition: 0.3s; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; }
         .nav-links a.nav-btn:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); color: #fff; }
-
         /* Animations */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-
         /* Blog Hero */
         .blog-hero { padding: 140px 2rem 60px; background: #fff; text-align: center; border-bottom: 1px solid #e2e8f0; }
         .blog-hero h1 { font-size: 3.5rem; font-family: 'Outfit'; font-weight: 800; color: #0f172a; margin-bottom: 1rem; letter-spacing: -1px;}
         .blog-hero p { font-size: 1.25rem; color: #64748b; max-width: 600px; margin: 0 auto; line-height: 1.6;}
-        
         /* Blog Layout */
         .blog-container { max-width: 1200px; margin: 4rem auto; padding: 0 2rem; }
-        
         /* Featured Post */
         .featured-post { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.04); margin-bottom: 4rem; transition: 0.3s; cursor: pointer; border: 1px solid rgba(0,0,0,0.05); }
         .featured-post:hover { transform: translateY(-5px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); }
@@ -48,7 +44,6 @@
         .featured-content p { color: #475569; font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; }
         .read-more { font-weight: 700; color: #10b981; display: flex; align-items: center; gap: 0.5rem; transition: 0.3s; }
         .read-more:hover { gap: 0.8rem; }
-
         /* Grid Posts */
         .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2.5rem; }
         .post-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer; display: flex; flex-direction: column; }
@@ -57,7 +52,6 @@
         .post-content { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
         .post-content h3 { font-size: 1.4rem; color: #0f172a; margin: 1rem 0; font-family: 'Outfit'; font-weight: 800; line-height: 1.3; }
         .post-content p { color: #64748b; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; flex: 1; }
-
         /* Footer */
         .footer { background: #f8fafc; padding: 6rem 2rem 2rem; position: relative; overflow: hidden; margin-top: 4rem; }
         .footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: #10b981; }
@@ -74,19 +68,16 @@
         .footer ul li a::before { content: '→'; opacity: 0; margin-right: -15px; color: #10b981; transition: 0.3s; font-weight: bold; }
         .footer ul li a:hover { color: #10b981; transform: translateX(5px); }
         .footer ul li a:hover::before { opacity: 1; margin-right: 8px; }
-        
         .newsletter-box { display: flex; background: #fff; padding: 5px; border-radius: 50px; border: 1px solid #cbd5e1; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: 0.3s; }
         .newsletter-box:focus-within { border-color: #10b981; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1); }
         .newsletter-box input { flex: 1; border: none; padding: 0.8rem 1.5rem; font-family: 'Outfit'; font-size: 0.95rem; border-radius: 50px; outline: none; color: #0f172a; }
         .newsletter-box button { background: #10b981; color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 700; font-family: 'Outfit'; cursor: pointer; transition: 0.3s; }
         .newsletter-box button:hover { background: #059669; }
-
         .footer-bottom { max-width: 1400px; margin: 0 auto; border-top: 1px solid #cbd5e1; padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
         .footer-bottom p { margin: 0; font-size: 0.95rem; font-weight: 600; color: #94a3b8; }
         .footer-socials { display: flex; gap: 1rem; }
         .footer-socials a { font-size: 1.2rem; color: #94a3b8; background: #fff; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 1px solid #e2e8f0; transition: 0.3s; }
         .footer-socials a:hover { color: #fff; background: #10b981; border-color: #10b981; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3); }
-
         @media (max-width: 900px) {
             .nav-links { display: none; }
             .featured-post { grid-template-columns: 1fr; }
@@ -100,8 +91,6 @@
     </style>
 </head>
 <body>
-
-    <!-- Navigation -->
     <nav class="top-nav">
         <div class="nav-container">
             <a href="{{ route('index') }}" class="logo"><i class="fas fa-leaf"></i> <span>Smart</span>Cal</a>
@@ -118,19 +107,13 @@
             </div>
         </div>
     </nav>
-
-    <!-- Blog Hero -->
     <header class="blog-hero">
         <div class="reveal active">
             <h1>SmartCal Blog</h1>
             <p>Eat smart. Live better. Explore our latest articles on nutrition, fitness, and building sustainable health habits.</p>
         </div>
     </header>
-
-    <!-- Blog Content -->
     <main class="blog-container">
-        
-        <!-- Featured Post -->
         <article class="featured-post reveal">
             <div class="featured-img" style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800');"></div>
             <div class="featured-content">
@@ -140,8 +123,6 @@
                 <div class="read-more">Read Article <i class="fas fa-arrow-right"></i></div>
             </div>
         </article>
-
-        <!-- Post Grid -->
         <div class="post-grid">
             <article class="post-card reveal">
                 <div class="post-img" style="background-image: url('https://images.unsplash.com/photo-1498837167922-41c53b4f094b?auto=format&fit=crop&q=80&w=600');"></div>
@@ -152,7 +133,6 @@
                     <div class="read-more">Read Article <i class="fas fa-arrow-right"></i></div>
                 </div>
             </article>
-
             <article class="post-card reveal">
                 <div class="post-img" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=600');"></div>
                 <div class="post-content">
@@ -162,7 +142,6 @@
                     <div class="read-more">Read Article <i class="fas fa-arrow-right"></i></div>
                 </div>
             </article>
-
             <article class="post-card reveal">
                 <div class="post-img" style="background-image: url('https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&q=80&w=600');"></div>
                 <div class="post-content">
@@ -172,7 +151,6 @@
                     <div class="read-more">Read Article <i class="fas fa-arrow-right"></i></div>
                 </div>
             </article>
-
             <article class="post-card reveal">
                 <div class="post-img" style="background-image: url('https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=600');"></div>
                 <div class="post-content">
@@ -182,7 +160,6 @@
                     <div class="read-more">Read Article <i class="fas fa-arrow-right"></i></div>
                 </div>
             </article>
-            
             <article class="post-card reveal">
                 <div class="post-img" style="background-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=600');"></div>
                 <div class="post-content">
@@ -192,7 +169,6 @@
                     <div class="read-more">Read Article <i class="fas fa-arrow-right"></i></div>
                 </div>
             </article>
-            
             <article class="post-card reveal">
                 <div class="post-img" style="background-image: url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=600');"></div>
                 <div class="post-content">
@@ -204,8 +180,6 @@
             </article>
         </div>
     </main>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-grid">
             <div>
@@ -252,7 +226,6 @@
             </div>
         </div>
     </footer>
-
     <script>
         // Scroll Reveal Animation
         function reveal() {
